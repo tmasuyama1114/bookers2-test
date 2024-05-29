@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'favorites/create'
+  get 'favorites/destroy'
   root :to =>"homes#top"
   get 'home/about' => 'homes#about', as: 'about'
 
