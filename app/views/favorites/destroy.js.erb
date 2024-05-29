@@ -1,0 +1,2 @@
+document.getElementById('favorite-btn-<%= @book.id %>').innerHTML = '<%= j(render 'favorites/favorite_btn', book: @book) %>';
+document.getElementById('favorite-count-<%= @book.id %>').innerHTML = 'いいね数: <%= @book.favorites.count %>';
