@@ -1,0 +1,13 @@
+<h1><%= "#{@room.users.pluck(:name).join('と')}のチャットルーム" %></h1>
+<% @chats.each do |chat| %>
+  <div>
+    <%= chat.user.name %>: <%= chat.message %>
+  </div>
+<% end %>
+
+<% if @room.users.include?(current_user) %>
+  <%= form_with model: [@room, @chat], local: true do |f| %>
+    <%= f.text_field :message %>
+    <%= f.submit "送信" %>
+  <% end %>
+<% end %>

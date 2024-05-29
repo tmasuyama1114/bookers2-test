@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'chats/create'
+  get 'rooms/show'
   get 'searches/search'
   get 'book_comments/create'
   get 'book_comments/destroy'
@@ -21,6 +23,10 @@ Rails.application.routes.draw do
   resources :books do
     resource :favorites, only: [:create, :destroy]
     resources :book_comments, only: [:create, :destroy]
+  end
+
+  resources :rooms, only: [:show, :create] do
+    resources :chats, only: [:create]
   end
 
   get '/search', to: 'searches#search'
